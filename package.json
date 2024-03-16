@@ -1,0 +1,35 @@
+{
+  "name": "managemen-boards-front-end",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@next/third-parties": "^14.0.4",
+    "@types/node": "20.6.0",
+    "@types/react": "18.2.21",
+    "@types/react-dom": "18.2.7",
+    "@vercel/analytics": "^1.1.2",
+    "axios": "^1.5.0",
+    "eslint": "8.49.0",
+    "eslint-config-next": "^14.1.0",
+    "formik": "^2.4.4",
+    "next": "^14.1.0",
+    "react": "^18.2.0",
+    "react-content-loader": "^6.2.1",
+    "react-dom": "^18.2.0",
+    "react-highlight": "^0.15.0",
+    "react-hot-toast": "^2.4.1",
+    "react-icons": "^4.11.0",
+    "typescript": "5.2.2",
+    "uuid": "^9.0.1",
+    "yup": "^1.2.0"
+  },
+  "devDependencies": {
+    "@types/uuid": "^9.0.7"
+  }
+}
