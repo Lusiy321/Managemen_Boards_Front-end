@@ -1,0 +1,67 @@
+.card {
+    width: 300px;
+    /* Ширина карточки */
+    margin: 20px auto;
+    /* Расположение по центру */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Тень */
+    border-radius: 10px;
+    /* Скругленные углы */
+    padding: 20px;
+    /* Внутренний отступ */
+    background-color: #fff;
+    /* Цвет фона */
+}
+
+.cardBody {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons {
+    margin-top: 10px;
+    /* Отступ между кнопками */
+}
+
+.editButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    background-color: #007bff;
+    width: 50px;
+    height: 50px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    /* Скругленные углы */
+    cursor: pointer;
+    /* Задаем указатель при наведении */
+}
+
+.editButton:hover {
+    background-color: #0056b3;
+    /* Цвет фона при наведении */
+}
+
+.deleteButton {
+    padding: 5px 10px;
+    /* Отступы внутри кнопки */
+    background-color: #dc3545;
+    /* Цвет фона */
+    color: #fff;
+    /* Цвет текста */
+    border: none;
+    /* Убираем границу */
+    border-radius: 5px;
+    /* Скругленные углы */
+    cursor: pointer;
+    /* Задаем указатель при наведении */
+}
+
+.deleteButton:hover {
+    background-color: #c82333;
+    /* Цвет фона при наведении */
+}

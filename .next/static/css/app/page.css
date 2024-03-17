@@ -1,235 +1,169 @@
-/*!*******************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[3]!./src/app/page.module.css ***!
-  \*******************************************************************************************************************************************************************************************************************************************************************/
-.page_main__GlU4n {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 6rem;
-  min-height: 100vh;
+/*!***************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[3]!./src/styles/searchBar.module.css ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************/
+.searchBar_searchContainer__UY8vp {
+    display: flex;
+    align-items: center;
 }
 
-.page_description__86bsR {
-  display: inherit;
-  justify-content: inherit;
-  align-items: inherit;
-  font-size: 0.85rem;
-  max-width: var(--max-width);
-  width: 100%;
-  z-index: 2;
-  font-family: var(--font-mono);
+.searchBar_searchInput__801Ul {
+    flex: 1 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
 }
 
-.page_description__86bsR a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
+.searchBar_searchButton___s7dh {
+    margin-left: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
 }
 
-.page_description__86bsR p {
-  position: relative;
-  margin: 0;
-  padding: 1rem;
-  background-color: rgba(var(--callout-rgb), 0.5);
-  border: 1px solid rgba(var(--callout-border-rgb), 0.3);
-  border-radius: var(--border-radius);
+.searchBar_searchButton___s7dh:hover {
+    background-color: #0056b3;
+}
+/*!**********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[3]!./src/styles/card.module.css ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************/
+.card_card__ppk8h {
+    width: 300px;
+    /* Ширина карточки */
+    margin: 20px auto;
+    /* Расположение по центру */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Тень */
+    border-radius: 10px;
+    /* Скругленные углы */
+    padding: 20px;
+    /* Внутренний отступ */
+    background-color: #fff;
+    /* Цвет фона */
 }
 
-.page_code__9lUUd {
-  font-weight: 700;
-  font-family: var(--font-mono);
+.card_cardBody__yCjS5 {
+    padding: 0;
+    /* Убираем внутренний отступ у тела карточки */
 }
 
-.page_grid__f5Kdy {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(25%, auto));
-  max-width: 100%;
-  width: var(--max-width);
+.card_buttons__JNCaz {
+    margin-top: 10px;
+    /* Отступ между кнопками */
 }
 
-.page_card__QV0Om {
-  padding: 1rem 1.2rem;
-  border-radius: var(--border-radius);
-  background: rgba(var(--card-rgb), 0);
-  border: 1px solid rgba(var(--card-border-rgb), 0);
-  transition: background 200ms, border 200ms;
+.card_editButton__dV5X_ {
+    margin-right: 5px;
+    /* Отступ между кнопками */
+    padding: 5px 10px;
+    /* Отступы внутри кнопки */
+    background-color: #007bff;
+    /* Цвет фона */
+    color: #fff;
+    /* Цвет текста */
+    border: none;
+    /* Убираем границу */
+    border-radius: 5px;
+    /* Скругленные углы */
+    cursor: pointer;
+    /* Задаем указатель при наведении */
 }
 
-.page_card__QV0Om span {
-  display: inline-block;
-  transition: transform 200ms;
+.card_editButton__dV5X_:hover {
+    background-color: #0056b3;
+    /* Цвет фона при наведении */
 }
 
-.page_card__QV0Om h2 {
-  font-weight: 600;
-  margin-bottom: 0.7rem;
+.card_deleteButton__1ZKHO {
+    padding: 5px 10px;
+    /* Отступы внутри кнопки */
+    background-color: #dc3545;
+    /* Цвет фона */
+    color: #fff;
+    /* Цвет текста */
+    border: none;
+    /* Убираем границу */
+    border-radius: 5px;
+    /* Скругленные углы */
+    cursor: pointer;
+    /* Задаем указатель при наведении */
 }
 
-.page_card__QV0Om p {
-  margin: 0;
-  opacity: 0.6;
-  font-size: 0.9rem;
-  line-height: 1.5;
-  max-width: 30ch;
-  text-wrap: balance;
+.card_deleteButton__1ZKHO:hover {
+    background-color: #c82333;
+    /* Цвет фона при наведении */
+}
+/*!*************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[3]!./src/styles/addCard.module.css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************/
+.addCard_card__CEqTs {
+    width: 300px;
+    /* Ширина карточки */
+    margin: 20px auto;
+    /* Расположение по центру */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Тень */
+    border-radius: 10px;
+    /* Скругленные углы */
+    padding: 20px;
+    /* Внутренний отступ */
+    background-color: #fff;
+    /* Цвет фона */
 }
 
-.page_center__5oHG7 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  padding: 4rem 0;
-}
-
-.page_center__5oHG7::before {
-  background: var(--secondary-glow);
-  border-radius: 50%;
-  width: 480px;
-  height: 360px;
-  margin-left: -400px;
-}
-
-.page_center__5oHG7::after {
-  background: var(--primary-glow);
-  width: 240px;
-  height: 180px;
-  z-index: -1;
-}
-
-.page_center__5oHG7::before,
-.page_center__5oHG7::after {
-  content: "";
-  left: 50%;
-  position: absolute;
-  filter: blur(45px);
-  transform: translateZ(0);
-}
-
-.page_logo__7fc9l {
-  position: relative;
-}
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  .page_card__QV0Om:hover {
-    background: rgba(var(--card-rgb), 0.1);
-    border: 1px solid rgba(var(--card-border-rgb), 0.15);
-  }
-
-  .page_card__QV0Om:hover span {
-    transform: translateX(4px);
-  }
-}
-
-@media (prefers-reduced-motion) {
-  .page_card__QV0Om:hover span {
-    transform: none;
-  }
-}
-
-/* Mobile */
-@media (max-width: 700px) {
-  .page_content__kDoxQ {
-    padding: 4rem;
-  }
-
-  .page_grid__f5Kdy {
-    grid-template-columns: 1fr;
-    margin-bottom: 120px;
-    max-width: 320px;
-    text-align: center;
-  }
-
-  .page_card__QV0Om {
-    padding: 1rem 2.5rem;
-  }
-
-  .page_card__QV0Om h2 {
-    margin-bottom: 0.5rem;
-  }
-
-  .page_center__5oHG7 {
-    padding: 8rem 0 6rem;
-  }
-
-  .page_center__5oHG7::before {
-    transform: none;
-    height: 300px;
-  }
-
-  .page_description__86bsR {
-    font-size: 0.8rem;
-  }
-
-  .page_description__86bsR a {
-    padding: 1rem;
-  }
-
-  .page_description__86bsR p,
-  .page_description__86bsR div {
+.addCard_cardBody__OyAib {
+    padding: 10px;
     display: flex;
     justify-content: center;
-    position: fixed;
-    width: 100%;
-  }
-
-  .page_description__86bsR p {
     align-items: center;
-    inset: 0 0 auto;
-    padding: 2rem 1rem 1.4rem;
-    border-radius: 0;
+}
+
+.addCard_buttons__216cg {
+    margin-top: 10px;
+    /* Отступ между кнопками */
+}
+
+.addCard_editButton__dpbRk {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    background-color: #007bff;
+    width: 50px;
+    height: 50px;
+    color: #fff;
     border: none;
-    border-bottom: 1px solid rgba(var(--callout-border-rgb), 0.25);
-    background: linear-gradient(
-      to bottom,
-      rgba(var(--background-start-rgb), 1),
-      rgba(var(--callout-rgb), 0.5)
-    );
-    background-clip: padding-box;
-    -webkit-backdrop-filter: blur(24px);
-            backdrop-filter: blur(24px);
-  }
-
-  .page_description__86bsR div {
-    align-items: flex-end;
-    pointer-events: none;
-    inset: auto 0 0;
-    padding: 2rem;
-    height: 200px;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgb(var(--background-end-rgb)) 40%
-    );
-    z-index: 1;
-  }
+    border-radius: 5px;
+    /* Скругленные углы */
+    cursor: pointer;
+    /* Задаем указатель при наведении */
 }
 
-/* Tablet and Smaller Desktop */
-@media (min-width: 701px) and (max-width: 1120px) {
-  .page_grid__f5Kdy {
-    grid-template-columns: repeat(2, 50%);
-  }
+.addCard_editButton__dpbRk:hover {
+    background-color: #0056b3;
+    /* Цвет фона при наведении */
 }
 
-@media (prefers-color-scheme: dark) {
-  .page_vercelLogo__rOY_u {
-    filter: invert(1);
-  }
-
-  .page_logo__7fc9l {
-    filter: invert(1) drop-shadow(0 0 0.3rem #ffffff70);
-  }
+.addCard_deleteButton__ph_MC {
+    padding: 5px 10px;
+    /* Отступы внутри кнопки */
+    background-color: #dc3545;
+    /* Цвет фона */
+    color: #fff;
+    /* Цвет текста */
+    border: none;
+    /* Убираем границу */
+    border-radius: 5px;
+    /* Скругленные углы */
+    cursor: pointer;
+    /* Задаем указатель при наведении */
 }
 
-@keyframes page_rotate__durgN {
-  from {
-    transform: rotate(360deg);
-  }
-  to {
-    transform: rotate(0deg);
-  }
+.addCard_deleteButton__ph_MC:hover {
+    background-color: #c82333;
+    /* Цвет фона при наведении */
 }
-
