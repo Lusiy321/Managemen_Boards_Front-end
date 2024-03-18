@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface ModalProps {
   onClose: () => void;
@@ -6,15 +6,17 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({ onClose, children }) => {
-//     const handleOutsideClick = (e: MouseEvent<HTMLDivElement>) => {
-//     if (e.target === e.currentTarget) {
-//       onClose();
-//     }
-//   };
+  // const handleOutsideClick = (e: MouseEvent<HTMLDivElement>) => {
+  //   if (e.target === e.currentTarget) {
+  //     onClose();
+  //   }
+  // };
   return (
     <div className="modal">
       <div className="modal-content">
-        <span className="close" onClick={onClose}>&times;</span>
+        <span className="close" onClick={onClose}>
+          &times;
+        </span>
         {children}
       </div>
       <style jsx>{`

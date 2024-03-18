@@ -1,6 +1,6 @@
-'use client'
-import React, { useState } from 'react';
-import SearchBar, { SearchBarProps } from "./components/SearchBar";
+"use client";
+import React, { useState } from "react";
+import SearchBar from "./components/SearchBar";
 import CreateBoardButton from "./components/CreateBoardButton";
 import Board from "./components/Board";
 
@@ -18,4 +18,4 @@ export default function Home() {
       {boardId && <Board boardId={boardId} />}
     </div>
   );
-};
+}
