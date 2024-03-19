@@ -1,21 +1,18 @@
-import React, { Children } from "react";
+import React from "react";
 import { useDrop } from "react-dnd";
 import Card from "./Card";
 import { iCards } from "./Board";
-import CreateCardButton from "./CreateCardButton";
+import styles from "@/styles/column.module.css";
 
 export const ItemTypes = {
-  CARD: "task",
+  CARD: "cards",
 };
 
 const Column: React.FC<iCards> = ({ title, cards, moveCard, children }) => {
-  const [{ isOver }, drop] = useDrop({
+  const [, drop] = useDrop({
     accept: ItemTypes.CARD,
-    drop: (item: any, monitor) => {
-      const dragIndex = item.index;
-      const hoverIndex = cards.length;
-      const state = item.state;
-      moveCard(dragIndex, hoverIndex, state);
+    drop: (item: any, monitor: any) => {
+      moveCard(title, item);
     },
     collect: (monitor) => ({
       isOver: monitor.isOver(),
@@ -23,9 +20,9 @@ const Column: React.FC<iCards> = ({ title, cards, moveCard, children }) => {
   });
 
   return (
-    <div className="container">
-      <div ref={drop} className="column">
-        <h2>{title}</h2>
+    <div className={styles.columnContainer}>
+      <div ref={drop} className={styles.column}>
+        <h2 className={styles.title}>{title}</h2>
         {cards.map((task, index) => (
           <Card
             key={task._id}
@@ -37,29 +34,6 @@ const Column: React.FC<iCards> = ({ title, cards, moveCard, children }) => {
         ))}
         {children}
       </div>
-      <style jsx>{`
-        .container {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 30px;
-          margin: 0 auto;
-          max-width: 1200px;
-        }
-
-        .column {
-          background-color: #f0f0f0;
-          border: 1px solid #ddd;
-          border-radius: 5px;
-          padding: 10px;
-          margin: 20px;
-          width: 360px;
-        }
-
-        h2 {
-          font-size: 18px;
-          margin-bottom: 10px;
-        }
-      `}</style>
     </div>
   );
 };

@@ -3,11 +3,12 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import Column from "./Column";
 import CreateCardButton from "./CreateCardButton";
+import styles from "@/styles/board.module.css";
 
 export interface iCards {
   title: string;
   cards: iTask[];
-  moveCard: (dragIndex: number, hoverIndex: number, state: string) => void;
+  moveCard: (title: string, state: iTask) => void;
   children: React.ReactNode;
 }
 
@@ -19,19 +20,23 @@ export interface iTask {
 }
 
 export interface Props {
-  boardId: string;
+  board: { _id: string; name: string };
 }
 
-const Board: React.FC<Props> = ({ boardId }) => {
+const Board: React.FC<Props> = ({ board }) => {
   const [data, setData] = useState<iTask[]>([]);
+
+  const handlerFetchData = (data: React.SetStateAction<any>) => {
+    setData(data);
+  };
+
   useEffect(() => {
     async function fetchData() {
       try {
         const response = await fetch(
-          `https://managemen-boards.onrender.com/cards/${boardId}`
+          `https://managemen-boards.onrender.com/cards/${board._id}`
         );
         const data = await response.json();
-
         setData(data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -40,39 +45,60 @@ const Board: React.FC<Props> = ({ boardId }) => {
     fetchData();
   }, []);
 
-  const moveCard = async (
-    dragIndex: number,
-    hoverIndex: number,
-    state: string
-  ) => {
-    const dragCard = data[dragIndex];
-    const newCards = [...data];
-    newCards.splice(dragIndex, 1);
-    newCards.splice(hoverIndex, 0, dragCard);
-
-    setData(newCards);
-
-    console.log(state, dragIndex, hoverIndex);
-
-    try {
-      await fetch(
-        `https://managemen-boards.onrender.com/update-card/${dragCard._id}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ state }),
-        }
-      );
-    } catch (error) {
-      console.error("Error updating card state:", error);
+  const moveCard = async (title: string, state: iTask) => {
+    if (title === "To Do") {
+      try {
+        await fetch(
+          `https://managemen-boards.onrender.com/update-card/${state._id}`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ state: "do" }),
+          }
+        );
+      } catch (error) {
+        console.error("Error updating card state:", error);
+      }
+    }
+    if (title === "In Progress") {
+      try {
+        await fetch(
+          `https://managemen-boards.onrender.com/update-card/${state._id}`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ state: "progress" }),
+          }
+        );
+      } catch (error) {
+        console.error("Error updating card state:", error);
+      }
+    }
+    if (title === "Done") {
+      try {
+        await fetch(
+          `https://managemen-boards.onrender.com/update-card/${state._id}`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ state: "done" }),
+          }
+        );
+      } catch (error) {
+        console.error("Error updating card state:", error);
+      }
     }
 
     async function fetchData() {
       try {
         const response = await fetch(
-          `https://managemen-boards.onrender.com/cards/${boardId}`
+          `https://managemen-boards.onrender.com/cards/${board._id}`
         );
         const data = await response.json();
 
@@ -85,51 +111,35 @@ const Board: React.FC<Props> = ({ boardId }) => {
   };
 
   return (
-    <div className="container">
-      <h1></h1>
-      <DndProvider backend={HTML5Backend}>
-        <Column
-          title="To Do"
-          cards={data.filter((task) => task.state === "do")}
-          moveCard={moveCard}
-        >
-          <CreateCardButton />
-        </Column>
-        <Column
-          title="In Progress"
-          cards={data.filter((task) => task.state === "progress")}
-          moveCard={moveCard}
-        >
-          {""}
-        </Column>
-        <Column
-          title="Done"
-          cards={data.filter((task) => task.state === "done")}
-          moveCard={moveCard}
-        >
-          {""}
-        </Column>
-      </DndProvider>
-      <style jsx>{`
-        .container {
-          display: flex;
-          margin: 0 auto;
-          max-width: 1200px;
-        }
-
-        .column {
-          background-color: #f0f0f0;
-          border: 1px solid #ddd;
-          border-radius: 5px;
-          padding: 10px;
-          margin: 20px;
-        }
-
-        h2 {
-          font-size: 18px;
-          margin-bottom: 10px;
-        }
-      `}</style>
+    <div className={styles.container}>
+      <div className={styles.head}>
+        <h1 className={styles.title}>{board.name}</h1>
+      </div>
+      <div className={styles.column}>
+        <DndProvider backend={HTML5Backend}>
+          <Column
+            title="To Do"
+            cards={data.filter((task) => task.state === "do")}
+            moveCard={moveCard}
+          >
+            <CreateCardButton board={board} onFetch={handlerFetchData} />
+          </Column>
+          <Column
+            title="In Progress"
+            cards={data.filter((task) => task.state === "progress")}
+            moveCard={moveCard}
+          >
+            {""}
+          </Column>
+          <Column
+            title="Done"
+            cards={data.filter((task) => task.state === "done")}
+            moveCard={moveCard}
+          >
+            {""}
+          </Column>
+        </DndProvider>
+      </div>
     </div>
   );
 };

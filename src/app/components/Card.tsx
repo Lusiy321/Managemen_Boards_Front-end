@@ -8,13 +8,13 @@ export interface MoveCard {
   task: iTask;
   index: number;
   id: string;
-  moveCard: (dragIndex: number, hoverIndex: number, state: string) => void;
+  moveCard: (title: string, state: iTask) => void;
 }
 
 const Card: React.FC<MoveCard> = ({ task, index, id, moveCard }) => {
   const [{ isDragging }, drag] = useDrag({
     type: ItemTypes.CARD,
-    item: { id, index, state: task.state },
+    item: task,
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),

@@ -1,0 +1,24 @@
+.container {
+    display: flex-wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.column {
+    display: flex;
+}
+
+.title {
+    font-size: 60px;
+    margin-bottom: 10px;
+}

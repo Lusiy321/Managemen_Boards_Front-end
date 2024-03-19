@@ -5,17 +5,17 @@ import CreateBoardButton from "./components/CreateBoardButton";
 import Board from "./components/Board";
 
 export default function Home() {
-  const [boardId, setBoardId] = useState(null);
+  const [board, setBoard] = useState(null);
 
-  const handleSearch = (id: React.SetStateAction<any>) => {
-    setBoardId(id);
+  const handleSearch = (data: React.SetStateAction<any>) => {
+    setBoard(data);
   };
 
   return (
     <div>
       <SearchBar onSearch={handleSearch} />
-      <CreateBoardButton />
-      {boardId && <Board boardId={boardId} />}
+      <CreateBoardButton onSearch={handleSearch} />
+      {board && <Board board={board} />}
     </div>
   );
 }

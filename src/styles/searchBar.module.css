@@ -1,14 +1,24 @@
 .searchContainer {
     display: flex;
+    justify-content: center;
     align-items: center;
+
+}
+
+.column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1200px;
+    margin: 20px
 }
 
 .searchInput {
-    flex: 1;
+    width: 900px;
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
-    border-radius: 5px 0 0 5px;
+    border-radius: 5px;
 }
 
 .searchButton {
@@ -16,7 +26,7 @@
     padding: 10px 20px;
     font-size: 16px;
     border: none;
-    border-radius: 0 5px 5px 0;
+    border-radius: 5px;
     background-color: #007bff;
     color: #fff;
     cursor: pointer;

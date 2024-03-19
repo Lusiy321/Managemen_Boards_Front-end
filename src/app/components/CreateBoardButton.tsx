@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
-import Modal from './Modal'; // Предполагается, что у вас есть компонент Modal
+import React, { useState } from "react";
+import Modal from "./Modal";
+import styles from "@/styles/createBoardButton.module.css";
+import { SearchBarProps } from "./SearchBar";
 
-const CreateBoardButton = () => {
+const CreateBoardButton: React.FC<SearchBarProps> = ({ onSearch }) => {
   const [showModal, setShowModal] = useState(false);
-  const [boardName, setBoardName] = useState('');
+  const [boardName, setBoardName] = useState("");
 
   const handleOpenModal = () => {
     setShowModal(true);
@@ -11,48 +13,57 @@ const CreateBoardButton = () => {
 
   const handleCloseModal = () => {
     setShowModal(false);
-    setBoardName(''); // Очищаем значение имени доски при закрытии модального окна
+    setBoardName(""); // Очищаем значение имени доски при закрытии модального окна
   };
 
-  const handleInputChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
+  const handleInputChange = (e: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
     setBoardName(e.target.value);
   };
 
-  const handleCreateBoard = () => {
-    // Здесь вы можете выполнить действия по созданию доски с указанным именем
-    console.log('Создание доски:', boardName);
-    handleCloseModal(); // Закрываем модальное окно после создания доски
+  const handleCreateBoard = async () => {
+    try {
+      const response = await fetch(
+        `https://managemen-boards.onrender.com/create-board/${boardName}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (response.ok) {
+        const data = await response.json();
+        onSearch(data);
+      } else {
+        console.error("Board not found");
+      }
+    } catch (error) {
+      console.error("Error searching for board:", error);
+    }
+    handleCloseModal();
   };
 
   return (
     <>
-      <button className="create-board-button" onClick={handleOpenModal}>
+      <button className={styles.createBoardButton} onClick={handleOpenModal}>
         <h2>Create dashboard</h2>
       </button>
       {showModal && (
         <Modal onClose={handleCloseModal}>
-          <h2>Enter board name</h2>
-          <input type="text" value={boardName} onChange={handleInputChange} />
-          <button onClick={handleCreateBoard}>Create</button>
+          <h2 className={styles.title}>Enter board name</h2>
+          <input
+            className={styles.input}
+            type="text"
+            value={boardName}
+            onChange={handleInputChange}
+          />
+          <button className={styles.button} onClick={handleCreateBoard}>
+            Create
+          </button>
         </Modal>
       )}
-      <style jsx>{`
-    .create-board-button {
-      display: block;
-      margin: 0 auto;
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-bottom: 40px;
-    }
-    .create-board-button:hover {
-      background-color: #0056b3;
-    }
-  `}</style>
     </>
   );
 };
