@@ -14,6 +14,37 @@
     align-items: center;
 }
 
+.cardBodEdit {
+    margin: 0 auto;
+}
+
+.editCardButton {
+    margin-right: 5px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.editCardButton:hover {
+    background-color: #0056b3;
+}
+
+.deleteButton {
+    padding: 5px 10px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.deleteButton:hover {
+    background-color: #c82333;
+}
+
 .modalBody {
     padding: 10px;
     display: flex-wrap;
@@ -106,6 +137,7 @@
 
 .button {
     padding: 10px 20px;
+    margin: 10px;
     font-size: 16px;
     border: none;
     border-radius: 5px;

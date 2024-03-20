@@ -8,11 +8,15 @@
 }
 
 .cardBody {
+    display: flex-wrap;
+    justify-content: center;
+    align-items: center;
     padding: 0;
 }
 
 .buttons {
-    margin-top: 10px;
+    display: flex;
+    margin-top: 20px;
 }
 
 .editButton {

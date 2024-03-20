@@ -3,15 +3,16 @@ import { useDrag } from "react-dnd";
 import { ItemTypes } from "./Column";
 import styles from "@/styles/card.module.css";
 import { iTask } from "./Board";
+import EditCardButton from "./EditCardButton";
+import DeleteCardButton from "./DeleteCardButton";
 
 export interface MoveCard {
   task: iTask;
-  index: number;
-  id: string;
   moveCard: (title: string, state: iTask) => void;
+  onFetch: (data: React.SetStateAction<any>) => void;
 }
 
-const Card: React.FC<MoveCard> = ({ task, index, id, moveCard }) => {
+const Card: React.FC<MoveCard> = ({ task, onFetch }) => {
   const [{ isDragging }, drag] = useDrag({
     type: ItemTypes.CARD,
     item: task,
@@ -28,8 +29,8 @@ const Card: React.FC<MoveCard> = ({ task, index, id, moveCard }) => {
         <h2>{task.title}</h2>
         <p>{task.description}</p>
         <div className={styles.buttons}>
-          <button className={styles.editButton}>Edit</button>
-          <button className={styles.deleteButton}>Delete</button>
+          <EditCardButton card={task} onFetch={onFetch} />
+          <DeleteCardButton card={task} onFetch={onFetch} />
         </div>
       </div>
     </div>

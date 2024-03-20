@@ -8,10 +8,16 @@ export const ItemTypes = {
   CARD: "cards",
 };
 
-const Column: React.FC<iCards> = ({ title, cards, moveCard, children }) => {
+const Column: React.FC<iCards> = ({
+  title,
+  cards,
+  moveCard,
+  children,
+  onFetch,
+}) => {
   const [, drop] = useDrop({
     accept: ItemTypes.CARD,
-    drop: (item: any, monitor: any) => {
+    drop: (item: any) => {
       moveCard(title, item);
     },
     collect: (monitor) => ({
@@ -23,13 +29,12 @@ const Column: React.FC<iCards> = ({ title, cards, moveCard, children }) => {
     <div className={styles.columnContainer}>
       <div ref={drop} className={styles.column}>
         <h2 className={styles.title}>{title}</h2>
-        {cards.map((task, index) => (
+        {cards.map((task) => (
           <Card
             key={task._id}
-            id={task._id}
             task={task}
-            index={index}
             moveCard={moveCard}
+            onFetch={onFetch}
           />
         ))}
         {children}

@@ -15,7 +15,7 @@ export default function Home() {
     <div>
       <SearchBar onSearch={handleSearch} />
       <CreateBoardButton onSearch={handleSearch} />
-      {board && <Board board={board} />}
+      {board && <Board board={board} onSearch={handleSearch} />}
     </div>
   );
 }

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
 import styles from "@/styles/searchBar.module.css";
+import GetBoardCardButton from "./GetCardButton";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 export interface SearchBarProps {
   onSearch: (searchTerm: string) => void;
 }
@@ -9,22 +12,31 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
 
   const handleSearch = async () => {
     try {
-      const response = await fetch(
-        `https://managemen-boards.onrender.com/${name}`
-      );
-      if (response.ok) {
-        const data = await response.json();
-        onSearch(data);
+      if (name !== "") {
+        const response = await fetch(
+          `https://managemen-boards.onrender.com/${name}`
+        );
+        console.log(response);
+        if (response.ok) {
+          const data = await response.json();
+
+          onSearch(data);
+          setName("");
+        } else {
+          setName("");
+          toast.error("Board not found");
+        }
       } else {
-        console.error("Board not found");
+        setName("");
       }
-    } catch (error) {
-      console.error("Error searching for board:", error);
+    } catch (error: any) {
+      console.error("Error fetching data:", error);
     }
   };
 
   return (
     <div className={styles.searchContainer}>
+      <ToastContainer />
       <div className={styles.column}>
         <input
           className={styles.searchInput}
@@ -33,9 +45,10 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        <Button className={styles.searchButton} onClick={handleSearch}>
+        <button className={styles.searchButton} onClick={handleSearch}>
           Enter
-        </Button>
+        </button>
+        <GetBoardCardButton onSearch={onSearch} />
       </div>
     </div>
   );

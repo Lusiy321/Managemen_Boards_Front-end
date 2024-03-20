@@ -4,12 +4,14 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import Column from "./Column";
 import CreateCardButton from "./CreateCardButton";
 import styles from "@/styles/board.module.css";
+import DeleteBoardButton from "./DeleteBoardButton";
 
 export interface iCards {
   title: string;
   cards: iTask[];
   moveCard: (title: string, state: iTask) => void;
   children: React.ReactNode;
+  onFetch: (data: iTask) => void;
 }
 
 export interface iTask {
@@ -17,13 +19,15 @@ export interface iTask {
   title: string;
   description: string;
   state: string;
+  dashboard: string;
 }
 
 export interface Props {
   board: { _id: string; name: string };
+  onSearch: (data: React.SetStateAction<any>) => void;
 }
 
-const Board: React.FC<Props> = ({ board }) => {
+const Board: React.FC<Props> = ({ board, onSearch }) => {
   const [data, setData] = useState<iTask[]>([]);
 
   const handlerFetchData = (data: React.SetStateAction<any>) => {
@@ -42,8 +46,9 @@ const Board: React.FC<Props> = ({ board }) => {
         console.error("Error fetching data:", error);
       }
     }
+
     fetchData();
-  }, []);
+  }, [board._id]);
 
   const moveCard = async (title: string, state: iTask) => {
     if (title === "To Do") {
@@ -113,14 +118,19 @@ const Board: React.FC<Props> = ({ board }) => {
   return (
     <div className={styles.container}>
       <div className={styles.head}>
-        <h1 className={styles.title}>{board.name}</h1>
+        <div className={styles.head}>
+          <h1 className={styles.title}>{board.name}</h1>
+        </div>
+        <DeleteBoardButton board={board} onSearch={onSearch} />
       </div>
+
       <div className={styles.column}>
         <DndProvider backend={HTML5Backend}>
           <Column
             title="To Do"
             cards={data.filter((task) => task.state === "do")}
             moveCard={moveCard}
+            onFetch={handlerFetchData}
           >
             <CreateCardButton board={board} onFetch={handlerFetchData} />
           </Column>
@@ -128,6 +138,7 @@ const Board: React.FC<Props> = ({ board }) => {
             title="In Progress"
             cards={data.filter((task) => task.state === "progress")}
             moveCard={moveCard}
+            onFetch={handlerFetchData}
           >
             {""}
           </Column>
@@ -135,6 +146,7 @@ const Board: React.FC<Props> = ({ board }) => {
             title="Done"
             cards={data.filter((task) => task.state === "done")}
             moveCard={moveCard}
+            onFetch={handlerFetchData}
           >
             {""}
           </Column>
