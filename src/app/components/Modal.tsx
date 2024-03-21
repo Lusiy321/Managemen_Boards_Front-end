@@ -7,11 +7,6 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({ onClose, children }) => {
-  // const handleOutsideClick = (e: MouseEvent<HTMLDivElement>) => {
-  //   if (e.target === e.currentTarget) {
-  //     onClose();
-  //   }
-  // };
   return (
     <div className={styles.modal}>
       <div className={styles.modalContent}>

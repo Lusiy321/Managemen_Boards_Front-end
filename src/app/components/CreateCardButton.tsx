@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styles from "@/styles/addCard.module.css";
 import Modal from "./Modal";
+import { ToastContainer, toast } from "react-toastify";
+
 export interface iData {
   board: { _id: string; name: string };
   onFetch: (data: React.SetStateAction<any>) => void;
@@ -28,6 +30,7 @@ const CreateCardButton: React.FC<iData> = ({ board, onFetch }) => {
       const data = await response.json();
       onFetch(data);
     } catch (error) {
+      toast.error("Card name exists");
       console.error("Error updating card state:", error);
     }
     setTitle("");
@@ -39,6 +42,7 @@ const CreateCardButton: React.FC<iData> = ({ board, onFetch }) => {
   };
   return (
     <div className={styles.card}>
+      <ToastContainer />
       <div className={styles.cardBody}>
         <button className={styles.editButton} onClick={handleCard}>
           +

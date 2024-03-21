@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Modal from "./Modal";
 import styles from "@/styles/createBoardButton.module.css";
 import { SearchBarProps } from "./SearchBar";
+import { ToastContainer, toast } from "react-toastify";
 
 const CreateBoardButton: React.FC<SearchBarProps> = ({ onSearch }) => {
   const [showModal, setShowModal] = useState(false);
@@ -13,7 +14,7 @@ const CreateBoardButton: React.FC<SearchBarProps> = ({ onSearch }) => {
 
   const handleCloseModal = () => {
     setShowModal(false);
-    setBoardName(""); // Очищаем значение имени доски при закрытии модального окна
+    setBoardName("");
   };
 
   const handleInputChange = (e: {
@@ -37,6 +38,7 @@ const CreateBoardButton: React.FC<SearchBarProps> = ({ onSearch }) => {
         const data = await response.json();
         onSearch(data);
       } else {
+        toast.error("Board name exist");
         console.error("Board not found");
       }
     } catch (error) {
@@ -47,6 +49,7 @@ const CreateBoardButton: React.FC<SearchBarProps> = ({ onSearch }) => {
 
   return (
     <>
+      <ToastContainer />
       <button className={styles.createBoardButton} onClick={handleOpenModal}>
         <h2>Create dashboard</h2>
       </button>
