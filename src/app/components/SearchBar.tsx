@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "@/styles/searchBar.module.css";
-import GetBoardCardButton from "./GetCardButton";
+import GetBoardCardButton from "./GetBoardButton";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 

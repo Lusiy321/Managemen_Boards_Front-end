@@ -44,7 +44,7 @@ const DeleteCardButton: React.FC<iEdit> = ({ card, onFetch }) => {
         <Modal onClose={() => setshowModal(false)}>
           <div className={styles.modalBody}>
             <div>
-              <h2 className={styles.title}>Delete Card</h2>
+              <h2 className={styles.title}>Delete this Card?</h2>
             </div>
             <div className={styles.buttonContainer}>
               <button className={styles.button} onClick={handleDelete}>

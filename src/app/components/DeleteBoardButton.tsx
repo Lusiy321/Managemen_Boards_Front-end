@@ -44,7 +44,7 @@ const DeleteCardButton: React.FC<iDel> = ({ board, onSearch }) => {
         <Modal onClose={() => setshowModal(false)}>
           <div className={styles.modalBody}>
             <div>
-              <h2 className={styles.title}>Delete Card</h2>
+              <h2 className={styles.title}>Delete this board?</h2>
             </div>
             <div className={styles.buttonContainer}>
               <button className={styles.button} onClick={handleDelete}>

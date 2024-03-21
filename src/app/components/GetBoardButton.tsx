@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styles from "@/styles/searchBar.module.css";
 import Modal from "./Modal";
-import { Props } from "./Board";
 
 export interface iBoard {
   _id: string;
@@ -12,7 +11,7 @@ export interface iSearch {
   onSearch: (data: React.SetStateAction<any>) => void;
 }
 
-const GetBoardCardButton: React.FC<iSearch> = ({ onSearch }) => {
+const GetAllBoardButton: React.FC<iSearch> = ({ onSearch }) => {
   const [showModal, setshowModal] = useState(false);
   const [data, setData] = useState([]);
 
@@ -52,7 +51,7 @@ const GetBoardCardButton: React.FC<iSearch> = ({ onSearch }) => {
       </div>
       {showModal && (
         <Modal onClose={() => setshowModal(false)}>
-          <div className={styles.column}>
+          <div className={styles.modalBody}>
             <h2 className={styles.title}>All Dashboards:</h2>
             {data.map((board: iBoard) => (
               <button
@@ -71,4 +70,4 @@ const GetBoardCardButton: React.FC<iSearch> = ({ onSearch }) => {
   );
 };
 
-export default GetBoardCardButton;
+export default GetAllBoardButton;
